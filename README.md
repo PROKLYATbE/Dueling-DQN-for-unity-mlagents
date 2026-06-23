@@ -67,35 +67,28 @@ then the Unity `Behavior Name` must also be:
 BasicDQN
 ```
 
-### Main Parameters
+## Common Trainer Configurations
 
-- `trainer_type` — specifies the trainer type. For this plugin, it must be set to `dueling_dqn`.
-- `max_steps` — maximum number of environment steps used for training.
-- `time_horizon` — number of steps collected before the trajectory is processed by the trainer.
-- `summary_freq` — frequency of writing training statistics for TensorBoard.
-- `keep_checkpoints` — number of saved model checkpoints.
+| Setting | Description |
+|---|---|
+| `trainer_type` | Type of trainer used for training. For this plugin, the value must be `dueling_dqn`. |
 
-### Hyperparameters
 
-- `learning_rate` — learning rate used by the optimizer.
-- `learning_rate_schedule` — learning rate schedule. The current configuration uses a constant learning rate.
-- `batch_size` — number of samples used in one training update.
-- `buffer_size` — maximum number of transitions stored in the replay buffer.
-- `tau` — coefficient for soft updating the target network.
-- `steps_per_update` — controls how often the network is updated during training.
-- `exploration_schedule` — exploration schedule for epsilon-greedy action selection.
-- `exploration_initial_eps` — initial epsilon value used at the beginning of training.
-- `exploration_final_eps` — final epsilon value used after exploration decay.
-- `exploration_steps` — number of steps over which epsilon is decreased from the initial value to the final value.
+## Dueling DQN Hyperparameters
 
-### Network Settings
+| Setting | Default Value | Description |
+|---|---|
+| `hyperparameters -> learning_rate` | `0.0003` | Learning rate used by the optimizer during neural network updates. |
+| `hyperparameters -> learning_rate_schedule` | `128` | Schedule for changing the learning rate during training. The `constant` value keeps the learning rate unchanged. |
+| `hyperparameters -> batch_size` | `50000` | Number of samples taken from the replay buffer for one training update. |
+| `hyperparameters -> buffer_size` | `0` | Maximum number of transitions stored in the replay buffer. |
+| `hyperparameters -> tau` | `0.005` | Coefficient used for soft updating the target network. A smaller value makes target updates smoother. |
+| `hyperparameters -> steps_per_update` | `1` | Controls how often the neural network is updated relative to the number of environment steps. |
+| `hyperparameters -> exploration_schedule` | `false` | Schedule used for changing epsilon during epsilon-greedy exploration. |
+| `hyperparameters -> exploration_initial_eps` | `linear` | Initial epsilon value at the beginning of training. A higher value increases random exploration. |
+| `hyperparameters -> exploration_final_eps` | `0.1` | Final epsilon value after exploration decay. |
+| `hyperparameters -> exploration_steps` | `0.05` | Number of steps over which epsilon decreases from `exploration_initial_eps` to `exploration_final_eps`. |
 
-- `normalize` — enables or disables observation normalization.
-- `hidden_units` — number of neurons in each hidden layer.
-- `num_layers` — number of hidden layers in the neural network.
-- `vis_encode_type` — visual encoder type used by ML-Agents.
+For common Unity ML-Agents trainer settings, network settings, reward signals, and other standard YAML parameters, refer to the official ML-Agents documentation:
 
-### Reward Signal
-
-- `gamma` — discount factor for future rewards.
-- `strength` — multiplier for the extrinsic reward signal.
+https://docs.unity3d.com/Packages/com.unity.ml-agents%404.0/manual/Training-Configuration-File.html
