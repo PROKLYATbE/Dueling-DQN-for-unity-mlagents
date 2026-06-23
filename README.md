@@ -77,7 +77,7 @@ BasicDQN
 ## Dueling DQN Hyperparameters
 
 | Setting | Default Value | Description |
-|---|---|
+|---|---|---|
 | `hyperparameters -> learning_rate` | `0.0003` | Learning rate used by the optimizer during neural network updates. |
 | `hyperparameters -> learning_rate_schedule` | `128` | Schedule for changing the learning rate during training. The `constant` value keeps the learning rate unchanged. |
 | `hyperparameters -> batch_size` | `50000` | Number of samples taken from the replay buffer for one training update. |
