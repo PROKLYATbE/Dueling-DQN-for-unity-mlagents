@@ -21,6 +21,16 @@ https://docs.unity3d.com/Packages/com.unity.ml-agents%404.0/manual/Installation.
 
 ## 4. Installing the Dueling DQN Plugin
 
+Download the repository with the Dueling DQN trainer source code.
+
+You can clone the repository using Git:
+
+```bibtex
+git clone https://github.com/PROKLYATbE/Dueling-DQN-for-unity-mlagents.git
+```
+
+Or download it manually from GitHub as a ZIP archive and extract it to any convenient folder.
+
 Before installing the plugin, activate the Python virtual environment:
 
 ```bibtex
